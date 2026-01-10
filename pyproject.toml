@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "qiskit-circuit-profiler"
+version = "0.1.0"
+description = "A lightweight tool to profile Qiskit circuits using graph-theoretic metrics."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+  {name = "Johannes Weinert", email = "joh.weinert@gmail.com"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "qiskit>=1.0.0",
+    "rustworkx>=0.14.0",
+    "networkx>=3.0",
+    "numpy",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0",
+    "pytest-cov",
+]
+dataset = [
+    "mqt.bench",
+    "pandas",
+    "func-timeout",
+]
+plotting = [
+    "pydot",
+    "Pillow",
+]
+
+[project.urls]
+Homepage = "https://github.com/joweinert/qiskit-circuit-profiler"
+Repository = "https://github.com/joweinert/qiskit-circuit-profiler"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qmetrics"]
+
+[tool.hatch.build.targets.editable]
+packages = ["src/qmetrics"]
